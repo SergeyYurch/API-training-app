@@ -1,0 +1,12 @@
+{
+	"name": "api-training",
+	"version": "1.0.0",
+	"description": "API -training project(using Node, Express)",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Sergey Yurchenko",
+	"license": "ISC"
+}
