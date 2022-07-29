@@ -1,4 +1,5 @@
 import express from 'express';
+import { userRouter } from './users/users.js';
 
 const port = 8000;
 const app = express();
@@ -15,6 +16,9 @@ app.route('/hello')
 	.post((req, res) => {
 		res.send('Hello! Post!')
 	})
+
+app.use('/users', userRouter)
+
 
 app.listen(port, () => {
 	console.log(`Серевер за пущен на http://localhost: ${port}`)
