@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import { userRouter } from './users/users.js';
 
 const port = 8000;
@@ -9,6 +9,8 @@ app.use((req, res, next) => {
 	console.log('Use middleware app.use');
 	next();
 })
+
+app.use('/users', userRouter);
 
 app.all('/hello', (req, res, next) => {
 	console.log('Middleware is work');
@@ -24,7 +26,7 @@ app.route('/hello')
 	})
 
 
-app.use((err, req, res, next) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 	console.log(err.message);
 	res.status(500).send(err.message)
 })
