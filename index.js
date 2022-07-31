@@ -4,6 +4,12 @@ import { userRouter } from './users/users.js';
 const port = 8000;
 const app = express();
 
+//Middleware for all app
+app.use((req, res, next) => {
+	console.log('Use middleware app.use');
+	next();
+})
+
 app.all('/hello', (req, res, next) => {
 	console.log('Middleware is work');
 	next();
@@ -11,13 +17,17 @@ app.all('/hello', (req, res, next) => {
 
 app.route('/hello')
 	.get((req, res) => {
-		res.send('Hello!')
+		throw new Error('Error!!!!')
 	})
 	.post((req, res) => {
 		res.send('Hello! Post!')
 	})
 
-app.use('/users', userRouter)
+
+app.use((err, req, res, next) => {
+	console.log(err.message);
+	res.status(500).send(err.message)
+})
 
 
 app.listen(port, () => {
