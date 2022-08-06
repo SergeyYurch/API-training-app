@@ -5,9 +5,8 @@ import { HTTPError } from './../common/errors/http-error.class';
 import { inject, injectable } from 'inversify';
 import { ILogger } from '../logger/logger.interface';
 import { TYPES } from '../types';
-import 'reflect-metadata'
+import 'reflect-metadata';
 import { IUserController } from './user.controller.interface';
-
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
@@ -15,17 +14,14 @@ export class UserController extends BaseController implements IUserController {
 		super(loggerService);
 		this.bindRoutes([
 			{ path: '/register', method: 'post', func: this.register },
-			{ path: '/login', method: 'post', func: this.login }
-		])
+			{ path: '/login', method: 'post', func: this.login },
+		]);
 	}
-	login(req: Request, res: Response, next: NextFunction) {
+	login(req: Request, res: Response, next: NextFunction): void {
 		next(new HTTPError(401, 'ошибка авторизации'));
 	}
 
-	register(req: Request, res: Response, next: NextFunction) {
-		this.ok(res, 'register')
-
+	register(req: Request, res: Response, next: NextFunction): void {
+		this.ok(res, 'register');
 	}
-
-
 }

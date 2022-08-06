@@ -7,6 +7,5 @@ export class HTTPError extends Error {
 		this.statusCode = statusCode;
 		this.message = message;
 		this.context = context;
-
 	}
 }
