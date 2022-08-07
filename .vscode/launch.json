@@ -4,7 +4,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "nodemon",
+			"name": "nodemon1",
 			"runtimeExecutable": "${workspaceFolder}/node_modules/nodemon/bin/nodemon.js",
 			"restart": true,
 			"console": "integratedTerminal",
