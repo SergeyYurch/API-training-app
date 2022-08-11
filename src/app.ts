@@ -1,15 +1,13 @@
 import express, { Express } from 'express';
 import { Server } from 'http';
-import { ILogger } from './logger/logger.interface';
 import { inject, injectable } from 'inversify';
-import { TYPES } from './types';
 import { json } from 'body-parser';
 import 'reflect-metadata';
-import { IUserController } from './users/user.controller.interface';
-import { IConfigService } from './config/config.service.interface';
-import { IExeptionFilter } from './common/errors/exeption.filter.interface';
 import { UserController } from './users/users.controller';
 import { PrismaService } from './database/prisma.service';
+import { ILogger } from './logger/logger.interface';
+import { IExeptionFilter } from './common/errors/exeption.filter.interface';
+import { TYPES } from './types';
 
 @injectable()
 export class App {
@@ -21,7 +19,6 @@ export class App {
 		@inject(TYPES.ILogger) private logger: ILogger,
 		@inject(TYPES.UserController) private userController: UserController,
 		@inject(TYPES.ExeptionFilter) private exeptionFilter: IExeptionFilter,
-		@inject(TYPES.ConfigService) private ConfigService: IConfigService,
 		@inject(TYPES.PrismaService) private prismaService: PrismaService,
 	) {
 		this.app = express();
